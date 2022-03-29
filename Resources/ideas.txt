@@ -1,0 +1,15 @@
+1.- Ordenación
+A.- Algoritmo de ordenación de listas de pokemon
+    Cogeremos todas las permutaciones posibles de un listado de pokemons y examinaremos una a una cual es la ordenada por orden alfabético.
+
+2.- Estructurado de archivos
+A.- Pokexed.txt
+    Pokedex.txt contiene todos los nombres de pokemons en el orden de la pokedex nacional, solo se usa para generar el pokemon a adivinar.
+B.- Gen 1..8
+    Cada archivo gen contiene el nombre de los pokemons que aparecen en esa generación.
+C.- Escogidos.txt
+    Listado de pokemons ya usados en el juego.
+
+3.- Mecanicas de juego
+A.- Generación de pokémon a adivinar
+    Se ordenará la lista de pokedex.txt y se seleccionará un número aleatorio. Se comprobará que ese pokemon no está en escogidos.txt. En caso de estar se escogerá otro número.
