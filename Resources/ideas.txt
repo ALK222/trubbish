@@ -9,7 +9,13 @@ B.- Gen 1..8
     Cada archivo gen contiene el nombre de los pokemons que aparecen en esa generación.
 C.- Escogidos.txt
     Listado de pokemons ya usados en el juego.
+D.- nombrePokemon.txt
+    Cada uno de estos archivos tendrá los datos de cada pokemon
 
 3.- Mecanicas de juego
 A.- Generación de pokémon a adivinar
     Se ordenará la lista de pokedex.txt y se seleccionará un número aleatorio. Se comprobará que ese pokemon no está en escogidos.txt. En caso de estar se escogerá otro número.
+B.- Si se utiliza el comando pokedex, se mostrarán todos los pokemon de la pokedex pero desordenados y gastará un intento (solo por molestar)
+
+4.- EXTRAS
+A.- Añadir una imagen de unos spaguetti y que si se elimina dicha foto, el juego dejará de funcionar, como el Team Fortress 2
