@@ -19,3 +19,10 @@ module Algo where
         | x >= head xs = esOrdenado xs
         | x < head xs = False
     esOrdenado _ = True
+
+    listaOrdenada :: FilePath -> FilePath -> IO ()
+    listaOrdenada f1 f2 = do
+        p <- readFile f1
+        let pss = permutations p
+        let ps  = buscaOrdenado pss
+        writeFile f2 ps
