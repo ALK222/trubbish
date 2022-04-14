@@ -72,49 +72,72 @@ std::string Pokemon::getT2()
 
 bool Pokemon::equals(Pokemon p)
 {
-    if (_n == p.getN())
+    std::string correctName;
+    std::string correctT1;
+    std::string correctT2;
+    std::string correctG;
+    std::string correctP;
+    std::string correctA;
+    correctName=_n == p.getN()?"YEP":"Has perdido y lo que sigue"
+    correctT1=_n == p.getT1()?"YEP":"Has perdido y lo que sigue"
+    correctT2=_n == p.getT2()?"YEP":"Has perdido y lo que sigue"
+    correctG=_n == p.getG()?"YEP":"Has perdido y lo que sigue"
+    correctP=_n == p.getP()?"YEP":"Has perdido y lo que sigue"
+    correctA=_n == p.getA()?"YEP":"Has perdido y lo que sigue"
+    if (correctName=="YEP")
     {
-        if (_t1 == p.getT1())
+        if (correctT1=="YEP")
         {
-            if (_t2 == p.getT2())
+            if (correctT2=="YEP")
             {
-                if (_g == p.getG())
+                if (correctG=="YEP")
                 {
-                    if (_p == p.getP())
+                    if (correctP=="YEP")
                     {
-                        if (_a == p.getA())
+                        if (correctA=="YEP")
                         {
                             return true;
                         }
                         else
                         {
-                            return false;
+                            goto step1;
+                            laststep:
+                            goto stop;
                         }
                     }
                     else
                     {
-                        return false;
+                        goto step1;
+                        step4:
+                        goto laststep;
                     }
                 }
                 else
                 {
-                    return false;
+                    goto step1;
+                    step3:
+                    goto step4;
                 }
             }
             else
             {
-                return false;
+                goto step1;
+                step2:
+                goto step3;
             }
         }
         else
         {
-            return false;
+            step1:
+            goto step2;
         }
     }
     else
     {
-        return false;
+        goto stop;
     }
+    stop:
+    std::cout<<"Fallaste wei\n";
     return false;
 }
 
