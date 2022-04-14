@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
-#include <string>
+#include <cstring>
+#include "Algo_stub.h"
 
 class Pokemon
 {
@@ -14,7 +15,7 @@ public:
     int getP();
     int getA();
     bool equals(Pokemon p);
-    static Pokemon stringToPokemon(std::string n);
+    static Pokemon stringToPokemon(char n[]);
 
 private:
     std::string _n;
@@ -117,9 +118,16 @@ bool Pokemon::equals(Pokemon p)
     return false;
 }
 
-Pokemon Pokemon::stringToPokemon(std::string n)
+Pokemon Pokemon::stringToPokemon(char n[])
 {
-    std::string f = "/resources/" + n + ".txt";
+    int g = buscaGen(n, 1);
+    if (g == 0)
+    {
+        return Pokemon("", "", "", 0, 0, 0);
+    }
+    std::string f = "/resources/" + g;
+    std::string na(n);
+    f += "/" + na + ".txt";
     std::ifstream d;
     d.open(f);
     if (!d)
@@ -131,26 +139,31 @@ Pokemon Pokemon::stringToPokemon(std::string n)
         std::string n, t1, t2;
         int g = 0, p = 0, a = 0;
         d >> n, t1, t2, g, p, a;
+
         return Pokemon(n, t1, t2, g, p, a);
     }
 }
 
-int main()
+int main(int argc, char **argv)
 {
+    hs_init(&argc, &argv);
     int seguirJugando = 0;
     while (seguirJugando == 0)
     {
-        Pokemon p = Pokemon::Pokemon("chimchar", "Fuego", "Ninguno", 4, 1, 1);
+        Pokemon p = Pokemon("chimchar", "Fuego", "Ninguno", 4, 1, 1);
         int averiguado = 0;
     adivina:
         std::cout << "Introduce un pokemon: ";
         std::string g;
         std::cin >> g;
-        Pokemon p1 = Pokemon::stringToPokemon(g);
+        char a[g.length() + 1];
+        strcpy(a, g.c_str());
+        Pokemon p1 = Pokemon::stringToPokemon(a);
         if (!p1.equals(p))
         {
             goto adivina;
         }
     }
+    hs_exit();
     return 0;
 }

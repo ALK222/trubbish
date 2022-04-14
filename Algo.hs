@@ -1,28 +1,21 @@
+
+
 module Algo where
-    permutations :: [a] -> [[a]]
-    permutations []       = [[]]
-    permutations (x : xs) = concat [intercalado x ys | ys <- permutations xs]
 
+    import Foreign.C.String ( CString, peekCString, newCString )
+    import Foreign.C.Types ( CInt(..) )
+    import System.IO.Unsafe (unsafePerformIO)
+    
+    foreign export ccall buscaGen :: CString -> CInt -> CInt
 
-    intercalado :: a -> [a] -> [[a]]
-    intercalado x []       = [[x]]
-    intercalado x (y : ys) = (x : y : ys) : [y : zs | zs <- intercalado x ys]
-
-    buscaOrdenado :: (Eq a, Ord a) => [[a]] -> [a]
-    buscaOrdenado [[]]       = []
-    buscaOrdenado []         = []
-    buscaOrdenado (xs : xss) = if esOrdenado xs then xs else buscaOrdenado xss
-
-    esOrdenado :: (Eq a, Ord a) => [a] -> Bool
-    esOrdenado [] = True
-    esOrdenado (x : xs)
-        | x >= head xs = esOrdenado xs
-        | x < head xs = False
-    esOrdenado _ = True
-
-    listaOrdenada :: FilePath -> FilePath -> IO ()
-    listaOrdenada f1 f2 = do
-        p <- readFile f1
-        let pss = permutations p
-        let ps  = buscaOrdenado pss
-        writeFile f2 ps
+    buscaGen:: CString -> CInt -> CInt
+    buscaGen _ 9 = 0
+    buscaGen n g =
+        if (null res) then (buscaGen n (g + 1)) else g
+        where
+            gen = show g
+            fileName = "Resources/" ++ gen ++ ".txt"
+            pokemonList = unsafePerformIO (readFile fileName)
+            pokemons = words pokemonList
+            name = unsafePerformIO (peekCString n)
+            res = filter (\p -> p == name ) pokemons
