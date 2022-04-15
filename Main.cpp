@@ -3,8 +3,10 @@
 #include <cstring>
 #include <string>
 #ifdef __GLASGOW_HASKELL__
-#include "Algo_stub.h"
+#include "haskell_wrapper.h"
 #endif
+
+// https://stackoverflow.com/questions/3859340/calling-haskell-from-c-code
 
 class Pokemon
 {
@@ -18,7 +20,7 @@ public:
     int getP();
     int getA();
     bool equals(Pokemon p);
-    static Pokemon stringToPokemon(char n[]);
+    static Pokemon stringToPokemon(std::string n);
 
 private:
     std::string _n;
@@ -151,9 +153,13 @@ bool Pokemon::equals(Pokemon p)
     return false;
 }
 
-Pokemon Pokemon::stringToPokemon(char n[])
+Pokemon Pokemon::stringToPokemon(std::string n)
 {
+#ifndef __GLASGOW_HASKELL__
     int g = buscaGen(n, 1);
+#else
+    int g = buscaGenWrapper(static_cast<void *>(&n), 1);
+#endif
     if (g == 0)
     {
         return Pokemon("", "", "", 0, 0, 0);
@@ -168,8 +174,12 @@ Pokemon Pokemon::stringToPokemon(char n[])
     }
     else
     {
-        std::string n, t1, t2;
-        int g = 0, p = 0, a = 0;
+        std::string n;
+        std::string t1;
+        std::string t2;
+        int g = 0;
+        int p = 0;
+        int a = 0;
         d >> n;
         d >> t1;
         d >> t2;
@@ -200,9 +210,7 @@ int main()
         std::cout << "Introduce un pokemon: ";
         std::string g;
         std::cin >> g;
-        char a[g.length() + 1];
-        strcpy(a, g.c_str());
-        Pokemon p1 = Pokemon::stringToPokemon(a);
+        Pokemon p1 = Pokemon::stringToPokemon(g);
         if (!p1.equals(p))
         {
             goto adivina;
