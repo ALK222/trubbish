@@ -113,12 +113,12 @@ bool Pokemon::equals(Pokemon p)
     std::string correctG;
     std::string correctP;
     std::string correctA;
-    correctName=_n == p.getN()?"YEP":"Has perdido y lo que sigue"
-    correctT1=_n == p.getT1()?"YEP":"Has perdido y lo que sigue"
-    correctT2=_n == p.getT2()?"YEP":"Has perdido y lo que sigue"
-    correctG=_n == p.getG()?"YEP":"Has perdido y lo que sigue"
-    correctP=_n == p.getP()?"YEP":"Has perdido y lo que sigue"
-    correctA=_n == p.getA()?"YEP":"Has perdido y lo que sigue"
+    correctName=_n == p.getN()?"YEP":"Has perdido y lo que sigue";
+    correctT1=_t1 == p.getT1()?"YEP":"Has perdido y lo que sigue";
+    correctT2=_t2 == p.getT2()?"YEP":"Has perdido y lo que sigue";
+    correctG=_g == p.getG()?"YEP":"Has perdido y lo que sigue";
+    correctP=_p == p.getP()?"YEP":"Has perdido y lo que sigue";
+    correctA=_a == p.getA()?"YEP":"Has perdido y lo que sigue"; 
     if (correctName=="YEP")
     {
         if (correctT1=="YEP")
