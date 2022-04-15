@@ -215,19 +215,34 @@ int main()
     // Initialize Haskell runtime
     hs_init(&argc, &pargv);
 #endif
+    int intentosRestantes=10;
     int seguirJugando = 0;
     while (seguirJugando == 0)
     {
         Pokemon p = Pokemon("chimchar", "Fuego", "Ninguno", 4, 1, 1);
         int averiguado = 0;
     adivina:
+        std::cout << "Te quedan ";
+        std::cout << intentosRestantes;
+        std::cout << " intentos \n";
         std::cout << "Introduce un pokemon: ";
         std::string g;
         std::cin >> g;
         Pokemon p1 = Pokemon::stringToPokemon(g);
         if (!p1.equals(p))
         {
-            goto adivina;
+            int randa=rand();
+            if((intentosRestantes=intentosRestantes-(randa%2+1))>0)
+             goto adivina;
+            else
+            {
+                std::cout<< "HAS PERDIDO, el pokemon era: "<< p.getN()<<std::endl;
+                seguirJugando=-1;
+            }
+        }
+        else{
+                std::cout<< "HAS GANADO\n";
+                seguirJugando=-1;
         }
     }
 #ifdef __GLASGOW_HASKELL__
