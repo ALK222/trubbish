@@ -25,3 +25,5 @@ cabal.project.local~
 *.link_output
 
 *.ghc_output
+
+trubbish
