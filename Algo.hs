@@ -1,7 +1,7 @@
-
-
-module Algo where
-
+{-# LANGUAGE CPP                      #-}
+{-# LANGUAGE ForeignFunctionInterface #-}
+{-# OPTIONS_GHC -fno-warn-unused-top-binds #-}
+module Algo (buscaGen) where
     import Foreign.C.String ( CString, peekCString, newCString )
     import Foreign.C.Types ( CInt(..) )
     import System.IO.Unsafe (unsafePerformIO)

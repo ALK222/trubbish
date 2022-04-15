@@ -1,7 +1,10 @@
 #include <iostream>
 #include <fstream>
 #include <cstring>
+#include <string>
+#ifdef __GLASGOW_HASKELL__
 #include "Algo_stub.h"
+#endif
 
 class Pokemon
 {
@@ -25,6 +28,36 @@ private:
     int _p;
     int _a;
 };
+
+#ifndef __GLASGOW_HASKELL__
+int buscaGen(std::string n, int g)
+{
+    int i = 1;
+    for (i; i < 2; ++i)
+    {
+        std::ifstream d;
+        std::string f = "Resources/" + std::to_string(i) + ".txt";
+        std::cout << f << std::endl;
+        d.open(f);
+    leer:
+        if (d.eof())
+        {
+            goto fin;
+        }
+        std::string n1;
+        d >> n1;
+        if (n == n1)
+        {
+            goto rnum;
+        }
+        goto leer;
+    }
+fin:
+    return 0;
+rnum:
+    return i;
+}
+#endif
 
 Pokemon::Pokemon(std::string n, std::string t1, std::string t2, int g, int p, int a)
 {
@@ -125,9 +158,8 @@ Pokemon Pokemon::stringToPokemon(char n[])
     {
         return Pokemon("", "", "", 0, 0, 0);
     }
-    std::string f = "/resources/" + g;
     std::string na(n);
-    f += "/" + na + ".txt";
+    std::string f = "/resources/" + std::to_string(g) + "/" + na + ".txt";
     std::ifstream d;
     d.open(f);
     if (!d)
@@ -138,15 +170,27 @@ Pokemon Pokemon::stringToPokemon(char n[])
     {
         std::string n, t1, t2;
         int g = 0, p = 0, a = 0;
-        d >> n, t1, t2, g, p, a;
+        d >> n;
+        d >> t1;
+        d >> t2;
+        d >> g;
+        d >> p;
+        d >> a;
 
         return Pokemon(n, t1, t2, g, p, a);
     }
 }
 
-int main(int argc, char **argv)
+int main()
 {
-    hs_init(&argc, &argv);
+#ifdef __GLASGOW_HASKELL__
+    int argc = 2;
+    char *argv[] = {(char *)"+RTS", (char *)"-A32m", NULL};
+    char **pargv = argv;
+
+    // Initialize Haskell runtime
+    hs_init(&argc, &pargv);
+#endif
     int seguirJugando = 0;
     while (seguirJugando == 0)
     {
@@ -164,6 +208,8 @@ int main(int argc, char **argv)
             goto adivina;
         }
     }
+#ifdef __GLASGOW_HASKELL__
     hs_exit();
+#endif
     return 0;
 }

@@ -4,7 +4,8 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                "/usr/lib/ghc/include/**"
+                "/usr/lib/ghc/include/**",
+                "${workspaceFolder}/hslib/csrc"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",
