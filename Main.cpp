@@ -135,36 +135,27 @@ bool Pokemon::equals(Pokemon p)
                         }
                         else
                         {
-                            goto step1;
-                            laststep:
                             goto stop;
                         }
                     }
                     else
                     {
-                        goto step1;
-                        step4:
-                        goto laststep;
+                        goto stop;
                     }
                 }
                 else
                 {
-                    goto step1;
-                    step3:
-                    goto step4;
+                    goto stop;
                 }
             }
             else
             {
-                goto step1;
-                step2:
-                goto step3;
+                goto stop;
             }
         }
         else
         {
-            step1:
-            goto step2;
+            goto stop;
         }
     }
     else
