@@ -1,0 +1,1 @@
+vaporeon water None 1 290 10

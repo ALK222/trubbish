@@ -200,9 +200,31 @@ Pokemon Pokemon::stringToPokemon(std::string n)
         d >> g;
         d >> p;
         d >> a;
-
-        return Pokemon(n, t1, t2, g, p, a);
+        d.close();
+        return Pokemon(n, t1, t2, g, p * 0.1, a * 0.1);
     }
+}
+
+std::string getRandPokemon(int n)
+{
+    std::ifstream f;
+    f.open("Resources/Pokedex.txt");
+    int i = 0;
+    std::string s;
+coge:
+    f >> s;
+    i++;
+    if (n == i)
+    {
+        goto devuelve;
+    }
+    else
+    {
+        goto coge;
+    }
+devuelve:
+    f.close();
+    return s;
 }
 
 int main()
@@ -215,36 +237,35 @@ int main()
     // Initialize Haskell runtime
     hs_init(&argc, &pargv);
 #endif
-    int intentosRestantes=10;
-    int seguirJugando = 0;
-    while (seguirJugando == 0)
+partidanueva:
+    Pokemon p = Pokemon::stringToPokemon(getRandPokemon(1));
+    int intentosRestantes = 10;
+    int averiguado = 0;
+adivina:
+    std::cout << "Te quedan ";
+    std::cout << intentosRestantes;
+    std::cout << " intentos \n";
+    std::cout << "Introduce un pokemon: ";
+    std::string g;
+    std::cin >> g;
+    Pokemon p1 = Pokemon::stringToPokemon(g);
+    if (!p1.equals(p))
     {
-        Pokemon p = Pokemon("chimchar", "Fuego", "Ninguno", 4, 1, 1);
-        int averiguado = 0;
-    adivina:
-        std::cout << "Te quedan ";
-        std::cout << intentosRestantes;
-        std::cout << " intentos \n";
-        std::cout << "Introduce un pokemon: ";
-        std::string g;
-        std::cin >> g;
-        Pokemon p1 = Pokemon::stringToPokemon(g);
-        if (!p1.equals(p))
+        int randa = rand();
+        if ((intentosRestantes = intentosRestantes - (randa % 2 + 1)) > 0)
+            goto adivina;
+        else
         {
-            int randa=rand();
-            if((intentosRestantes=intentosRestantes-(randa%2+1))>0)
-             goto adivina;
-            else
-            {
-                std::cout<< "HAS PERDIDO, el pokemon era: "<< p.getN()<<std::endl;
-                seguirJugando=-1;
-            }
-        }
-        else{
-                std::cout<< "HAS GANADO\n";
-                seguirJugando=-1;
+            std::cout << "HAS PERDIDO, el pokemon era: " << p.getN() << std::endl;
+            goto partidanueva;
         }
     }
+    else
+    {
+        std::cout << "HAS GANADO\n";
+        goto partidanueva;
+    }
+
 #ifdef __GLASGOW_HASKELL__
     hs_exit();
 #endif

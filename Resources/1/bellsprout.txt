@@ -1,0 +1,1 @@
+bellsprout grass poison 1 40 7

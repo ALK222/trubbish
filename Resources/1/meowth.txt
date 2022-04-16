@@ -1,0 +1,1 @@
+meowth normal None 1 42 4

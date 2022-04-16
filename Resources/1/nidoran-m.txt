@@ -1,0 +1,1 @@
+nidoran-m poison None 1 90 5

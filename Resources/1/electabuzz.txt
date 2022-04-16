@@ -1,0 +1,1 @@
+electabuzz electric None 1 300 11

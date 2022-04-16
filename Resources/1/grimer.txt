@@ -1,0 +1,1 @@
+grimer poison None 1 300 9

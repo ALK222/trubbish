@@ -1,0 +1,1 @@
+venusaur grass poison 1 1000 20

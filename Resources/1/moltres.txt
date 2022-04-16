@@ -1,0 +1,1 @@
+moltres fire flying 1 600 20

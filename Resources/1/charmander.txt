@@ -1,0 +1,1 @@
+charmander fire None 1 85 6

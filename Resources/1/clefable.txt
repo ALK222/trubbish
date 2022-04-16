@@ -1,0 +1,1 @@
+clefable fairy None 1 400 13

@@ -1,0 +1,1 @@
+nidoqueen poison ground 1 600 13

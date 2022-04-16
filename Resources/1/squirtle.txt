@@ -1,0 +1,1 @@
+squirtle water None 1 90 5

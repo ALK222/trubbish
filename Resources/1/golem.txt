@@ -1,0 +1,1 @@
+golem rock ground 1 3000 14

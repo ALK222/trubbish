@@ -1,0 +1,1 @@
+ivysaur grass poison 1 130 10

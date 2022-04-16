@@ -1,0 +1,1 @@
+pidgey normal flying 1 18 3

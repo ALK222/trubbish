@@ -1,0 +1,1 @@
+farfetchd normal flying 1 150 8
