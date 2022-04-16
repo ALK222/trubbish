@@ -163,7 +163,50 @@ bool Pokemon::equals(Pokemon p)
         goto stop;
     }
 stop:
-    std::cout << "Fallaste\n";
+    std::string info = "GEN  |  Type1  | Type2  | Weight  | Height\n  ";
+    std::string gen = "";
+    std::string t1 = "a";
+    std::string t2 = "a";
+    std::string pe = "";
+    std::string a = "";
+    if (_g == p.getG())
+        gen = "\u2705";
+    else
+        gen = p.getG() > _g ? "\u25b2" : "\u25bc";
+    if (_p == p.getP())
+        pe = "\u2705";
+    else
+        pe = p.getP() > _p ? "\u25b2" : "\u25bc";
+
+    if (_a == p.getA())
+        a = "\u2705";
+    else
+        a = p.getA() > _a ? "\u25b2" : "\u25bc";
+    if (_t1 != p.getT1())
+    {
+        if (_t1 != p.getT2())
+        {
+            t1 = "\u274c";
+        }
+        else
+            t1 = "\u2194";
+    }
+    else
+        t1 = gen = "\u2705";
+
+    if (_t2 != p.getT2())
+    {
+        if (_t2 != p.getT1())
+        {
+            t2 = "\u274c";
+        }
+        else
+            t2 = "\u2194";
+    }
+    else
+        t2 = gen = "\u2705";
+    std::cout << "Fallaste\n"
+              << info << gen << "  |    " << t1 << "    |    " << t2 << "   |    " << pe << "    |    " << a << std::endl;
     return false;
 }
 
@@ -176,15 +219,15 @@ Pokemon Pokemon::stringToPokemon(std::string n)
 #endif
     if (g == 0)
     {
-        return Pokemon("", "", "", 0, 0, 0);
+        return Pokemon(n, "", "", 0, 0, 0);
     }
     std::string na(n);
-    std::string f = "/resources/" + std::to_string(g) + "/" + na + ".txt";
+    std::string f = "Resources/" + std::to_string(g) + "/" + na + ".txt";
     std::ifstream d;
     d.open(f);
     if (!d)
     {
-        return Pokemon("", "", "", 0, 0, 0);
+        return Pokemon(n, "", "", 0, 0, 0);
     }
     else
     {
@@ -208,7 +251,7 @@ Pokemon Pokemon::stringToPokemon(std::string n)
 std::string getRandPokemon(int n)
 {
     std::ifstream f;
-    f.open("Resources/Pokedex.txt");
+    f.open("Resources/pokedex.txt");
     int i = 0;
     std::string s;
 coge:
