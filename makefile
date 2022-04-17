@@ -1,7 +1,7 @@
 all: Algo haskell_wrapper Main Trubbish
 
 Main: Main 
-	g++ -c -O Main.cpp -I/usr/lib/ghc/include
+	g++ -c -O Main.cpp -I/usr/lib/ghc/include -D __GLASGOW_HASKELL__
 Algo: Algo
 	ghc Algo.hs 
 haskell_wrapper: haskell_wrapper
