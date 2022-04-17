@@ -1,1 +1,1 @@
-basculegion agua fantasma 8 1100 30
+basculegion water ghost 8 1100 30

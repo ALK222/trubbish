@@ -1,1 +1,1 @@
-basculin-white-striped agua None 5 180 10
+basculin-white-striped water None 5 180 10

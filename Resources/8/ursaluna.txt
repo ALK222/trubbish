@@ -1,1 +1,1 @@
-ursaluna normal tierra 8 2900 24
+ursaluna normal ground 8 2900 24

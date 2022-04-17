@@ -1,1 +1,1 @@
-enamorus-incarnate hada volador 8 480 16
+enamorus-incarnate fairy flying 8 480 16

@@ -1,1 +1,1 @@
-voltorb-hisui elctrico planta 1 130 5
+voltorb-hisui elctric grass 1 130 5

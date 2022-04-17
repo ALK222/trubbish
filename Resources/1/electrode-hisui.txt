@@ -1,1 +1,1 @@
-electrode-hisui electrico planta 1 710 12
+electrode-hisui electric grass 1 710 12
