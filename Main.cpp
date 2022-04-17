@@ -3,7 +3,6 @@
 #include <cstring>
 #include <string>
 #include <windows.h>
-#include <vector>
 //#define __GLASGOW_HASKELL__
 #ifdef __GLASGOW_HASKELL__
 #include "haskell_wrapper.h"
@@ -44,8 +43,10 @@ int buscaGen(std::string n, int g)
     leer:
         if (d.eof())
         {
-            goto fin;
+          
         }
+        else{
+
         std::string n1;
         d >> n1;
         if (n == n1)
@@ -53,9 +54,9 @@ int buscaGen(std::string n, int g)
             goto rnum;
         }
         goto leer;
+        }
     }
-fin:
-    return 0;
+    
 rnum:
     return i;
 }
@@ -324,7 +325,7 @@ adivina:
     {
         int randa = rand();
         if ((intentosRestantes = intentosRestantes - (randa % 2 + 1)) > 0){
-
+#ifndef __GLASGOW_HASKELL__
             if(intentosRestantes<=5){
                 struct Help
                 {
@@ -358,7 +359,7 @@ adivina:
                     }
 
             }
-                
+#endif                
             goto adivina;
         }
         else
