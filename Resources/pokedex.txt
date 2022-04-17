@@ -109,8 +109,8 @@ galarian-slowbro
 mega-slowbro
 magnemite
 magneton
-farfetch’d
-galarian-farfetch’d
+farfetchd
+galarian-farfetchd
 doduo
 dodrio
 seel
@@ -199,7 +199,7 @@ mega-mewtwo-y
 mew
 chikorita
 bayleef
-mega-ium
+meganium
 cyndaquil
 quilava
 typhlosion
@@ -325,7 +325,7 @@ mightyena
 zigzagoon
 galarian-zigzagoon
 linoone
-mega-linoone
+galarian-linoone
 wurmple
 silcoon
 beautifly
@@ -594,7 +594,7 @@ phione
 manaphy
 darkrai
 shaymin
-slyshaymin
+sky shaymin
 arceus
 victini
 snivy
@@ -918,7 +918,7 @@ golisopod
 sandygast
 palossand
 pyukumuku
-type:null
+type-null
 silvally
 minior
 coreminior

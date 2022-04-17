@@ -14,13 +14,13 @@ ordenaLista (x : xs) i = do
 
 calculaGen:: Int -> Int
 calculaGen x
-    | x < 151 = 1
-    | x < 251 = 2
-    | x < 387 = 3
-    | x < 495 = 4
-    | x < 650 = 5
-    | x < 722 = 6
-    | x < 810 = 7
+    | x < 199 = 1
+    | x < 310 = 2
+    | x < 475 = 3
+    | x < 599 = 4
+    | x < 775 = 5
+    | x < 863 = 6
+    | x < 962 = 7
     | otherwise = 8
 
 meteEnLista :: String -> Int -> IO Int

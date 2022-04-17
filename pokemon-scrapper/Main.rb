@@ -2,10 +2,48 @@
 require 'mechanize'
 require 'json'
 
+def parseForma(forma)
+    case forma
+    when "galarian"
+        return "galar"
+    when "hisuian"
+        return "hisui"
+    when "alolan"
+        return "alola"
+    else
+        return forma
+
+end
+
+def creaURLForma(nombre)
+    split = nombre.split("-")
+    nombre = split[1]
+    forma = split[0]
+    exceso = ""
+    if(lenght(split) == 3)
+        exceso = split[2]
+    end
+    url = ""
+    if(nombre == "mime")
+        url = forma + "-" + nombre
+    elsif (nombre == "mr")
+        url = nombre + "-" + exceso + parseForma(forma)
+    else
+        url = nombre + "-" parseForma(forma)
+        if(lenght(split) == 3)
+            url += "-" + exceso
+        end
+    end
+    return url
+end
+
 def createPokemonFile(filename, gen)
   file = File.open(filename, "r")
   data = file_data = file.readlines.map(&:chomp)
   data.each{ |poke|
+        if(lenght(poke.split("-") >= 2)
+            poke = creaURLForma(poke)
+        end
         agent = Mechanize.new 
         url = "https://pokeapi.co/api/v2/pokemon/"
         page = agent.get(url + poke + "/")
