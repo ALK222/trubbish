@@ -16,7 +16,19 @@ def parseForma(forma)
 end
 
 def creaURLForma(nombre)
-    if(name == "ho-oh")
+    if(nombre == "ho-oh")
+        return nombre 
+    end
+    if(nombre == "mime-jr")
+        return nombre 
+    end
+    if(nombre == "porygon-z")
+        return nombre 
+    end
+    if(nombre == "type-null")
+        return nombre
+    end
+    if nombre == "jangmo-o" || nombre == "hakamo-o" || nombre == "kommo-o"
         return nombre 
     end
     split = nombre.split("-")
@@ -27,10 +39,16 @@ def creaURLForma(nombre)
         exceso = split[2]
     end
     url = ""
-    if(nombre == "mime")
+    if(forma == "mr" || forma == "tapu")
         url = forma + "-" + nombre
     elsif (nombre == "mr")
         url = nombre + "-" + exceso + "-" + forma
+    elsif (exceso == "basculin")
+        url = exceso + "-" + forma + "-" + nombre
+    elsif (nombre == "zen" || nombre == "pom")
+        url = exceso + "-" + nombre + "-" + forma
+    elsif (nombre == "key" || exceso == "urshifu" || exceso == "morpeko")
+        url = exceso + "-" + forma + "-" + nombre
     else
         url = nombre + "-" + forma
         if(split.length() == 3)
@@ -55,7 +73,7 @@ def createPokemonFile(filename, gen)
         begin
             page = agent.get(url + poke + "/")
         rescue Mechanize::ResponseCodeError => e
-            puts "Falta #{poke}"
+            puts "Falta #{poke}" 
             next 
         end
         p = JSON.parse(page.content)

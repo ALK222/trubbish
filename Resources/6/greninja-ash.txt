@@ -1,0 +1,1 @@
+greninja-ash water dark 6 400 15

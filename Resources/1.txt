@@ -145,7 +145,7 @@ hitmonchan
 lickitung
 koffing
 weezing
-alolan-weezing
+galarian-weezing
 rhyhorn
 rhydon
 chansey
