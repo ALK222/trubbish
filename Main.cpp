@@ -2,7 +2,9 @@
 #include <fstream>
 #include <cstring>
 #include <string>
-#define __GLASGOW_HASKELL__
+#include <windows.h>
+#include <vector>
+//#define __GLASGOW_HASKELL__
 #ifdef __GLASGOW_HASKELL__
 #include "haskell_wrapper.h"
 #endif
@@ -321,8 +323,44 @@ adivina:
     if (!p1.equals(p))
     {
         int randa = rand();
-        if ((intentosRestantes = intentosRestantes - (randa % 2 + 1)) > 0)
+        if ((intentosRestantes = intentosRestantes - (randa % 2 + 1)) > 0){
+
+            if(intentosRestantes<=5){
+                struct Help
+                {
+                   std::string a;
+                   std::string b;
+                   std::string c;
+                };
+                Help help;
+                help.a="https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+                help.b="https://www.tiktok.com/@xime.the.remix/video/7080719647410048261?lang=es&u=6794154085656364038&is_copy_url=1&is_from_webapp=v1";
+                help.c="https://youtu.be/kTwLPu7-qY0?t=37";
+                std::cout<< "¿Pareces tener dificultades quieres ayuda?(Y/N):";
+                char c;
+                std::cin>>c;
+                if(std::tolower(c)=='y')
+                    switch ((rand()%3))
+                    {
+                    case 0:
+                    ShellExecute(0,0,help.a.c_str(),0,0,SW_SHOWNORMAL);
+                        break;
+                    case 1:
+                    ShellExecute(0,0,help.b.c_str(),0,0,SW_SHOWNORMAL);
+                        break;
+                    
+                    case 2:
+                    ShellExecute(0,0,help.c.c_str(),0,0,SW_SHOWNORMAL);
+                        break;
+                    
+                    default:
+                        break;
+                    }
+
+            }
+                
             goto adivina;
+        }
         else
         {
             std::cout << "HAS PERDIDO, el pokemon era: " << p.getN() << std::endl;
