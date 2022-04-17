@@ -46,20 +46,20 @@ int buscaGen(std::string n, int g)
     leer:
         if (d.eof())
         {
-          
         }
-        else{
-
-        std::string n1;
-        d >> n1;
-        if (n == n1)
+        else
         {
-            goto rnum;
-        }
-        goto leer;
+
+            std::string n1;
+            d >> n1;
+            if (n == n1)
+            {
+                goto rnum;
+            }
+            goto leer;
         }
     }
-    
+
 rnum:
     return i;
 }
@@ -327,9 +327,10 @@ adivina:
     if (!p1.equals(p))
     {
         int randa = rand();
-        if ((intentosRestantes = intentosRestantes - (randa % 2 + 1)) > 0){
-#ifndef __GLASGOW_HASKELL__
-            if(intentosRestantes<=5){
+        if ((intentosRestantes = intentosRestantes - (randa % 2 + 1)) > 0)
+        {
+            if (intentosRestantes <= 5)
+            {
                 struct Help
                 {
                     std::string a;
@@ -344,6 +345,7 @@ adivina:
                 char c;
                 std::cin >> c;
                 if (std::tolower(c) == 'y')
+                {
                     switch ((rand() % 3))
                     {
                     case 0:
@@ -366,24 +368,21 @@ adivina:
                     default:
                         break;
                     }
+                    goto adivina;
+                }
             }
-
+            else
+            {
+                std::cout << "HAS PERDIDO, el pokemon era: " << p.getN() << std::endl;
+                goto partidanueva;
             }
-                
-            goto adivina;
         }
         else
         {
-            std::cout << "HAS PERDIDO, el pokemon era: " << p.getN() << std::endl;
+            std::cout << "HAS GANADO\n";
             goto partidanueva;
         }
     }
-    else
-    {
-        std::cout << "HAS GANADO\n";
-        goto partidanueva;
-    }
-
 #ifdef __GLASGOW_HASKELL__
     hs_exit();
 #endif
