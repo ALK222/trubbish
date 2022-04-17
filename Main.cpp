@@ -371,13 +371,13 @@ adivina:
                 }
             }
             goto adivina;
-            }
+        }
         else
         {
             std::cout << "HAS PERDIDO, el pokemon era: " << p.getN() << std::endl;
             goto partidanueva;
         }
-        }
+    }
     else
     {
         std::cout << "HAS GANADO\n";

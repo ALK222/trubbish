@@ -30,3 +30,5 @@ trubbish
 .vscode/
 Main.exe
 Resources/escogidos.txt
+
+*.zip
