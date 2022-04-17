@@ -1,0 +1,1 @@
+sentret normal None 2 60 8

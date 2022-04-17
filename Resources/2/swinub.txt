@@ -1,0 +1,1 @@
+swinub ice ground 2 65 4

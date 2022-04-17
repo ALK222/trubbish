@@ -1,0 +1,1 @@
+sceptile grass None 3 522 17

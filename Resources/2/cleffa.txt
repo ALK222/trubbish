@@ -1,0 +1,1 @@
+cleffa fairy None 2 30 3

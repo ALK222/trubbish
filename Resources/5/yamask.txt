@@ -1,0 +1,1 @@
+yamask ghost None 5 15 5

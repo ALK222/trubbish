@@ -1,0 +1,1 @@
+prinplup water None 4 230 8

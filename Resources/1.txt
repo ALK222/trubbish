@@ -17,7 +17,7 @@ butterfree
 weedle
 kakuna
 beedrill
-mega-beedridll
+mega-beedrill
 pidgey
 pidgeotto
 pidgeot
@@ -37,10 +37,10 @@ sandshrew
 alolan-sandshrew
 sandslash
 alolan-sandslash
-nidoran♀
+nidoran-f
 nidorina
 nidoqueen
-nidoran♂
+nidoran-m
 nidorino
 nidoking
 clefairy

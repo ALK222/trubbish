@@ -1,0 +1,1 @@
+yamask-galar ground ghost 5 15 5

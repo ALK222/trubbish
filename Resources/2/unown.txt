@@ -1,0 +1,1 @@
+unown psychic None 2 50 5
