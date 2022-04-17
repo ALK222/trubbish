@@ -173,4 +173,3 @@ resolute-keldeo
 aria-meloetta
 pirouette-meloetta
 genesect
-chespin

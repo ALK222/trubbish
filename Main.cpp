@@ -2,11 +2,10 @@
 #include <fstream>
 #include <cstring>
 #include <string>
+#define __GLASGOW_HASKELL__
 #ifdef __GLASGOW_HASKELL__
 #include "haskell_wrapper.h"
 #endif
-
-// https://stackoverflow.com/questions/3859340/calling-haskell-from-c-code
 
 class Pokemon
 {
@@ -39,7 +38,6 @@ int buscaGen(std::string n, int g)
     {
         std::ifstream d;
         std::string f = "Resources/" + std::to_string(i) + ".txt";
-        std::cout << f << std::endl;
         d.open(f);
     leer:
         if (d.eof())
@@ -215,7 +213,7 @@ Pokemon Pokemon::stringToPokemon(std::string n)
 #ifndef __GLASGOW_HASKELL__
     int g = buscaGen(n, 1);
 #else
-    int g = buscaGenWrapper(static_cast<void *>(&n), 1);
+    int g = buscaGenWrapper(1);
 #endif
     if (g == 0)
     {
@@ -223,7 +221,6 @@ Pokemon Pokemon::stringToPokemon(std::string n)
     }
     std::string na(n);
     std::string f = "Resources/" + std::to_string(g) + "/" + na + ".txt";
-    std::cout << f << std::endl;
     std::ifstream d;
     d.open(f);
     if (!d)
@@ -281,11 +278,18 @@ devuelve:
         }
         else
         {
+            d.close();
+            std::ofstream a;
+            a.open("Resources/escogidos.txt", std::ios_base::app);
+            a << s;
+            a << "\n";
+            a.close();
             goto returnBien;
         }
     }
 returnBien:
     f.close();
+    // std::cout << s << std::endl;
     return s;
 }
 
@@ -295,7 +299,6 @@ int main()
     int argc = 2;
     char *argv[] = {(char *)"+RTS", (char *)"-A32m", NULL};
     char **pargv = argv;
-
     // Initialize Haskell runtime
     hs_init(&argc, &pargv);
 #endif

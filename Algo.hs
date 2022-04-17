@@ -6,16 +6,30 @@ module Algo (buscaGen) where
     import Foreign.C.Types ( CInt(..) )
     import System.IO.Unsafe (unsafePerformIO)
 
-    foreign export ccall buscaGen :: CString -> CInt -> CInt
+    foreign export ccall buscaGen :: CInt -> CInt
 
-    buscaGen:: CString -> CInt -> CInt
-    buscaGen _ 9 = 0
-    buscaGen n g =
-        if (not res) then (buscaGen n (g + 1)) else g
-        where
-            gen = show g
-            fileName = "Resources/" ++ gen ++ ".txt"
-            pokemonList = unsafePerformIO (readFile fileName)
-            pokemons = words pokemonList
-            name = unsafePerformIO (peekCString n)
-            res = name `elem` pokemons
+    contains :: String -> [String] -> Bool 
+    contains _ [] = False 
+    contains n (x:xs) 
+        | n == x = True 
+        | otherwise = contains n xs
+
+    buscaGenAux:: CInt -> IO CInt 
+    buscaGenAux 9 = do return 0
+    buscaGenAux g =  do 
+        let gen = show g 
+        let filename = "Resources/" ++ gen ++ ".txt"
+        pokemonlist <- readFile filename 
+        let filename2 = "Resources/escogidos.txt"
+        pokemonlist2 <- readFile filename2
+        let pokemons = words pokemonlist 
+        let selected = words pokemonlist2
+        let name = last(selected)
+        let res = contains name pokemons
+        if (res == False) then
+            buscaGenAux (g + 1)
+        else 
+            return g
+
+    buscaGen:: CInt -> CInt
+    buscaGen g = unsafePerformIO (buscaGenAux g)
