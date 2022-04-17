@@ -35,7 +35,7 @@ private:
 int buscaGen(std::string n, int g)
 {
     int i = 1;
-    for (i; i < 2; ++i)
+    for (i; i < 9; ++i)
     {
         std::ifstream d;
         std::string f = "Resources/" + std::to_string(i) + ".txt";
@@ -223,6 +223,7 @@ Pokemon Pokemon::stringToPokemon(std::string n)
     }
     std::string na(n);
     std::string f = "Resources/" + std::to_string(g) + "/" + na + ".txt";
+    std::cout << f << std::endl;
     std::ifstream d;
     d.open(f);
     if (!d)
@@ -248,10 +249,13 @@ Pokemon Pokemon::stringToPokemon(std::string n)
     }
 }
 
-std::string getRandPokemon(int n)
+std::string getRandPokemon()
 {
+    std::srand(time(NULL));
     std::ifstream f;
     f.open("Resources/pokedex.txt");
+genera:
+    int n = rand() % 1066 + 0;
     int i = 0;
     std::string s;
 coge:
@@ -266,6 +270,21 @@ coge:
         goto coge;
     }
 devuelve:
+    std::ifstream d;
+    d.open("Resources/escogidos.txt");
+    std::string a;
+    while (!d.eof())
+    {
+        if (a == s)
+        {
+            goto genera;
+        }
+        else
+        {
+            goto returnBien;
+        }
+    }
+returnBien:
     f.close();
     return s;
 }
@@ -281,7 +300,7 @@ int main()
     hs_init(&argc, &pargv);
 #endif
 partidanueva:
-    Pokemon p = Pokemon::stringToPokemon(getRandPokemon(1));
+    Pokemon p = Pokemon::stringToPokemon(getRandPokemon());
     int intentosRestantes = 10;
     int averiguado = 0;
 adivina:
@@ -292,6 +311,10 @@ adivina:
     std::string g;
     std::cin >> g;
     Pokemon p1 = Pokemon::stringToPokemon(g);
+#ifdef __DEBUG__
+    std::cout << p1.getN() << std::endl;
+#endif
+
     if (!p1.equals(p))
     {
         int randa = rand();
