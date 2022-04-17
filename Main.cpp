@@ -368,20 +368,20 @@ adivina:
                     default:
                         break;
                     }
-                    goto adivina;
                 }
             }
-            else
-            {
-                std::cout << "HAS PERDIDO, el pokemon era: " << p.getN() << std::endl;
-                goto partidanueva;
+            goto adivina;
             }
-        }
         else
         {
-            std::cout << "HAS GANADO\n";
+            std::cout << "HAS PERDIDO, el pokemon era: " << p.getN() << std::endl;
             goto partidanueva;
         }
+        }
+    else
+    {
+        std::cout << "HAS GANADO\n";
+        goto partidanueva;
     }
 #ifdef __GLASGOW_HASKELL__
     hs_exit();
