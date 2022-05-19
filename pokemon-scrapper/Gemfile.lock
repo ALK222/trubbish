@@ -9,6 +9,7 @@ GEM
       unf (>= 0.0.5, < 1.0.0)
     http-cookie (1.0.4)
       domain_name (~> 0.5)
+    json (2.6.2)
     mechanize (2.8.4)
       addressable (~> 2.8)
       domain_name (~> 0.5, >= 0.5.20190701)
@@ -26,7 +27,7 @@ GEM
     net-http-digest_auth (1.4.1)
     net-http-persistent (4.0.1)
       connection_pool (~> 2.2)
-    nokogiri (1.13.4-x86_64-linux)
+    nokogiri (1.13.6-x86_64-linux)
       racc (~> 1.4)
     open-uri (0.2.0)
       stringio
@@ -50,6 +51,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  json
   mechanize
   open-uri
   poke-api-v2
