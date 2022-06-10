@@ -7,9 +7,10 @@ GEM
     date (3.2.2)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
-    http-cookie (1.0.4)
+    http-cookie (1.0.5)
       domain_name (~> 0.5)
-    mechanize (2.8.4)
+    json (2.6.2)
+    mechanize (2.8.5)
       addressable (~> 2.8)
       domain_name (~> 0.5, >= 0.5.20190701)
       http-cookie (~> 1.0, >= 1.0.3)
@@ -26,7 +27,7 @@ GEM
     net-http-digest_auth (1.4.1)
     net-http-persistent (4.0.1)
       connection_pool (~> 2.2)
-    nokogiri (1.13.4-x86_64-linux)
+    nokogiri (1.13.6-x86_64-linux)
       racc (~> 1.4)
     open-uri (0.2.0)
       stringio
@@ -41,7 +42,7 @@ GEM
       date
     unf (0.1.4)
       unf_ext
-    unf_ext (0.0.8.1)
+    unf_ext (0.0.8.2)
     uri (0.11.0)
     webrick (1.7.0)
     webrobots (0.1.2)
@@ -50,6 +51,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  json
   mechanize
   open-uri
   poke-api-v2
